@@ -11,6 +11,14 @@ const mutations = {
 const actions = {
   setCurrentUser({ commit }, user) {
     commit("SET_CURRENT_USER", user);
+    localStorage.setItem("user", JSON.stringify(user));
+  },
+  loadUserFromLocalStorage({ commit }) {
+    const userJSON = localStorage.getItem("user");
+    if (userJSON) {
+      const user = JSON.parse(userJSON);
+      commit("SET_CURRENT_USER", user);
+    }
   },
 };
 

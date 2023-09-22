@@ -21,5 +21,8 @@ const router = new VueRouter({
 new Vue({
   router,
   store,
+  created() {
+    this.$store.dispatch("loadUserFromLocalStorage");
+  },
   render: (h) => h(App),
 }).$mount("#app");

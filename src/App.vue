@@ -1,6 +1,13 @@
 <template>
   <div id="app">
-    <div class="header"></div>
+    <div class="header">
+      <button @click="clearStorageList" class="clear-storage">
+        Clear user storage
+      </button>
+      <button @click="clearStorageUser" class="clear-storage">
+        Clear list storage
+      </button>
+    </div>
     <div class="main">
       <router-view />
     </div>
@@ -11,10 +18,28 @@
 <script>
 export default {
   name: "App",
+  methods: {
+    clearStorageList() {
+      localStorage.clearItem("allTodos");
+    },
+    clearStorageUser() {
+      localStorage.clearItem("user");
+      window.location.reload();
+    },
+  },
 };
 </script>
 
 <style lang="scss">
+.header {
+  display: flex;
+  .clear-storage {
+    background-color: #5a5c5b;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
 body {
   margin: 0;
   padding: 0;
@@ -34,7 +59,6 @@ body {
     background-color: #545454;
     min-height: calc(100% - 330px);
     width: 100vw;
-    display: flex;
   }
 
   .footer {

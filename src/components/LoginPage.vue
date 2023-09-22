@@ -1,21 +1,23 @@
 <template>
-  <div class="form">
-    <div class="form__title">Description</div>
-    <div class="form__body">
-      <p class="form__label">description</p>
-      <div class="form__group">
-        <InputField
-          :validate-regex="/^[A-Za-z]+$/"
-          v-model="userName"
-          placeholder="Username"
-        />
-        <InputField
-          :validate-regex="/^[^a-zA-Z]*$/"
-          v-model="phoneNumber"
-          placeholder="Phone Number"
-        />
+  <div class="wrapper">
+    <div class="form">
+      <div class="form__title">Description</div>
+      <div class="form__body">
+        <p class="form__label">description</p>
+        <div class="form__group">
+          <InputField
+            :validate-regex="/^[A-Za-z]+$/"
+            v-model="userName"
+            placeholder="Username"
+          />
+          <InputField
+            :validate-regex="/^[^a-zA-Z]*$/"
+            v-model="phoneNumber"
+            placeholder="Phone Number"
+          />
+        </div>
+        <button @click="validateUser" class="form__button">Register</button>
       </div>
-      <button @click="validateUser" class="form__button">Register</button>
     </div>
   </div>
 </template>
@@ -47,11 +49,9 @@ export default {
         (user) =>
           user.username === this.userName && user.phone === this.phoneNumber
       );
-      console.log(user);
       this.setCurrentUser(user);
 
       if (user) {
-        console.log("1111");
         this.$router.push("/list");
       } else {
         alert("Login error");
@@ -62,6 +62,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.wrapper {
+  display: flex;
+  min-height: calc(100vh - 330px);
+}
 .form {
   width: 447px;
   height: 299px;
