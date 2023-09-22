@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="user">
+    <div class="user" v-if="currentUser">
       <div class="block">
         <p>User ID: {{ currentUser.id }}</p>
         <p>Name: {{ currentUser.name }}</p>
@@ -110,7 +110,6 @@ export default {
     setFilter(filter) {
       if (filter.type === STATUS_FILTER) {
         this.statusFilter = filter.val ? filter : [];
-        console.log(this.statusFilter);
       }
       if (filter.type === USER_ID_FILTER) {
         this.userFilter = filter.val ? filter : [];

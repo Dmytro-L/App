@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <div class="header">
-      <button @click="clearStorageList" class="clear-storage">
+      <button @click="clearStorageUser" class="clear-storage">
         Clear user storage
       </button>
-      <button @click="clearStorageUser" class="clear-storage">
+      <button @click="clearStorageList" class="clear-storage">
         Clear list storage
       </button>
     </div>
@@ -20,10 +20,10 @@ export default {
   name: "App",
   methods: {
     clearStorageList() {
-      localStorage.clearItem("allTodos");
+      localStorage.removeItem("allTodos");
     },
     clearStorageUser() {
-      localStorage.clearItem("user");
+      localStorage.removeItem("user");
       window.location.reload();
     },
   },

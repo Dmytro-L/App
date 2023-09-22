@@ -79,7 +79,6 @@ export default {
       const type = this.filterType;
       let unique = new Set();
       let filteredArray = [];
-      console.log(unique);
       if (type == "userId") {
         filteredArray = this.items.filter(function (obj) {
           if (!unique.has(obj.userId)) {
