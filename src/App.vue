@@ -34,6 +34,7 @@ body {
     background-color: #545454;
     min-height: calc(100% - 330px);
     width: 100vw;
+    display: flex;
   }
 
   .footer {
