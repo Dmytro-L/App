@@ -32,7 +32,6 @@ export default {
   },
   data() {
     return {
-      userInfo: null,
       userName: "",
       phoneNumber: "",
     };
@@ -48,11 +47,11 @@ export default {
         (user) =>
           user.username === this.userName && user.phone === this.phoneNumber
       );
-      this.userInfo = user;
+      console.log(user);
       this.setCurrentUser(user);
 
       if (user) {
-        localStorage.setItem("user", JSON.stringify(user));
+        console.log("1111");
         this.$router.push("/list");
       } else {
         alert("Login error");

@@ -2,14 +2,14 @@
   <div>
     <div class="user">
       <div class="block">
-        <p>User ID: {{ user.id }}</p>
-        <p>Name: {{ user.name }}</p>
-        <p>Email: {{ user.email }}</p>
+        <p>User ID: {{ currentUser.id }}</p>
+        <p>Name: {{ currentUser.name }}</p>
+        <p>Email: {{ currentUser.email }}</p>
       </div>
       <div class="block">
-        <p>UserName: {{ user.userName }}</p>
-        <p>Phone: {{ user.name }}</p>
-        <p>Website: {{ user.email }}</p>
+        <p>UserName: {{ currentUser.userName }}</p>
+        <p>Phone: {{ currentUser.name }}</p>
+        <p>Website: {{ currentUser.email }}</p>
       </div>
     </div>
     <div class="filters">
@@ -69,14 +69,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["allTodos"]),
-    user() {
-      const userJSON = localStorage.getItem("user");
-      if (userJSON) {
-        return JSON.parse(userJSON);
-      }
-      return null;
-    },
+    ...mapGetters(["allTodos", "currentUser"]),
     filteredTodos() {
       let filteredList = this.allTodos;
       if (Object.keys(this.userFilter).length > 0) {
@@ -126,7 +119,7 @@ export default {
     },
   },
   created() {
-    if (!this.user) {
+    if (!this.currentUser) {
       this.$router.push("/");
     } else {
       this.fetchTodos();
