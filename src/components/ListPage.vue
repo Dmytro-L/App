@@ -43,7 +43,6 @@
         <p>Comleted: {{ todo.completed ? "YES" : "NO" }}</p>
       </li>
     </ul>
-    <button @click="fetchTodos">Завантажити Todo</button>
   </div>
 </template>
 
